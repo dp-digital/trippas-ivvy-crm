@@ -6,6 +6,13 @@ const app = express();
 app.use(express.json()); // Parse JSON body
 
 app.post("/ivvy/add-lead", async (req, res) => {
+    const clientAuthHeader = req.headers["API-Authorization"] || req.headers["api-authorization"];
+    const serverAuthKey = process.env.SERVER_API_AUTH_KEY;
+
+     if (clientAuthHeader !== serverAuthKey) {
+        return res.status(401).json({ error: "Unauthorized: Invalid API key" });
+    }
+
     const apiKey = process.env.IVVY_API_KEY;
     const apiSecret = process.env.IVVY_API_SECRET;
 
