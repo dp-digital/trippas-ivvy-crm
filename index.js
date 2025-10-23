@@ -32,7 +32,7 @@ app.post("/ivvy/add-lead", async (req, res) => {
     const apiVersion = "1.0";
     const contentType = "application/json";
     const method = "POST";
-    const action = "/api/1.0/contact?action=addOrUpdateLead";
+    const action = "/api/1.0/venue?action=addOrUpdateOpportunity";
     const url = "https://api.ap-southeast-2.ivvy.com" + action;
     const ivvyDate = getIvvyDate();
 
@@ -90,3 +90,4 @@ function getIvvyDate() {
 
 // Export the app for Vercel serverless
 export default app;
+
